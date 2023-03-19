@@ -1,0 +1,59 @@
+server:
+  servlet:
+    context-path: /auth
+  port: 8080
+
+spring:
+  swagger-ui:
+    path: /api-docs
+  application:
+    name: authen-service
+  main:
+    allow-bean-definition-overriding: true
+    allow-circular-references: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL5Dialect
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 25MB
+      max-request-size: 101MB
+      file-size-threshold: 2KB
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://34.101.145.91:3306/java_demo
+    username: root
+    password: Admin@123#
+    hikari:
+      connectionTimeout: 30000
+      minimumIdle: 10
+      maximumPoolSize: 50
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      autoCommit: true
+      leakDetectionThreshold: 10000
+      poolName: hiKariPool
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: INFO
+
+security:
+  cors:
+    enabled: true
+  otp-ttl: 60
+  jwt:
+    secret: ${JWT_SECRET:zQeOMoJvG8Z7XCQ6I9+n0lByu0cA3y7w+v6Se0aV7bk=}
+    expire-in-minutes: ${JWT_EXPIRATION:60}
+
+
+## Redis
+redis:
+  host: ${REDIS_HOST:34.101.145.91}
+  port: ${REDIS_PORT:6579}
+  password:  ${REDIS_PASSWORD:123456}
+  expired: ${REDIS_EXPIRED:3600000}

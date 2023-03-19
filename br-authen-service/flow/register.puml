@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+actor Customer as customer
+participant "Api gateway" as gw
+participant "Authen service" as authService
+participant "User service" as userService
+participant "Notify service" as notifyService
+
+
+autonumber
+
+customer -> authService: Send get otp with phone number
+
+authService -> authService: Generate otp, create notify
+
+authService -> notifyService: Send notify message via sqs
+
+notifyService --> customer: Send otp ms
+
+customer -> authService: Validate otp
+
+customer -> userService: Create user account with information
+
+userService -> userService: Validate & save to database
+
+userService -> notifyService: Send welcome notify via sqs
+
+notifyService --> customer: Send welcome mail
+@enduml

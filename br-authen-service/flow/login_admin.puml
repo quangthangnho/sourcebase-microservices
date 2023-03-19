@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+actor Admin as admin
+participant "AWS Api gateway" as gw
+participant "Lambda" as lambda
+participant "Authorization Server" as authorizationServer
+participant "Internal services" as services
+
+admin -> admin: Choose login method
+
+admin -> gw : Make a request with Bearer jwt
+
+gw -> lambda: Check jwt with public jwk url
+
+alt invalid/expired jwt token
+    autonumber
+
+    lambda -> gw:  Response with status 401
+
+
+    gw -> admin: 401 status with message
+
+    admin -> authorizationServer: Do Authorization Code Flow
+
+    authorizationServer --> admin: Jwt token
+end
+
+alt valid jwt token
+
+    autonumber
+
+    lambda -> gw:  Response with status 2xx
+
+    gw -> services: Request forwarded
+    
+    services --> admin: Response
+
+end
+
+@enduml

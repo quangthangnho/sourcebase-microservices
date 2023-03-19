@@ -1,0 +1,316 @@
+{
+	"info": {
+		"_postman_id": "49fb63b2-47b6-4627-8ef1-0c2219c26a66",
+		"name": "test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20495523"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"phone\": \"0999999998\",\r\n    \"password\": \"12345678\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/v1/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "login success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"0999999998\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/v1/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"accessToken\": \"eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE2NzkwNDkxMTgsImlhdCI6MTY3OTA0NTUxOCwianRpIjoiODA5NjI3YWEtMTM5MC00MGE4LWFjYzItZmFlMmY4NjllMzgyIiwiaXNzIjoiREZJTEUiLCJhdWQiOiJERklMRSIsInN1YiI6IjA5OTk5OTk5OTgifQ.YtPbCq_v6IAAv4vHCj8XW-EN1-g8zonH3yrNCfwn0zc\",\n        \"refreshToken\": \"\",\n        \"type\": \"Bearer\",\n        \"id\": 5,\n        \"username\": \"0999999998\",\n        \"email\": \"nguyenvanabc@gmail.com\"\n    }\n}"
+				},
+				{
+					"name": "login fail",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone\": \"0999999999\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/v1/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"NUfBvK\",\n    \"error\": \"Auth-006\",\n    \"message\": \"Incorrect username or password\"\n}"
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE2NzkwNDk0MTAsImlhdCI6MTY3OTA0NTgxMCwianRpIjoiOTY0N2U5YWUtMzczYy00N2E2LWFhZmItMmMzNjc0ZDFjM2YyIiwiaXNzIjoiREZJTEUiLCJhdWQiOiJERklMRSIsInN1YiI6IjA5OTk5OTk5OTgifQ.XdhIAVZjK1Wd8oHjFMiiEY3AXv2T-eFsv2Ps2rLVEhA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/auth/v1/logout",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"v1",
+						"logout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "logout",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/v1/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": \"Log out successfully!\"\n}"
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"123456789\",\r\n    \"fullName\": \"Nguyễn Văn C\",\r\n    \"email\": \"nguyenvancc@gmail.com\",\r\n    \"phone\": \"0999199999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/auth/v1/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\": \"123456789\",\r\n    \"fullName\": \"Nguyễn Văn C\",\r\n    \"email\": \"nguyenvancc@gmail.com\",\r\n    \"phone\": \"0999199999\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/v1/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"id\": 6,\n        \"fullName\": \"Nguyễn Văn C\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "get detail",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXBlIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJleHAiOjE2NzkwNDk0MTAsImlhdCI6MTY3OTA0NTgxMCwianRpIjoiOTY0N2U5YWUtMzczYy00N2E2LWFhZmItMmMzNjc0ZDFjM2YyIiwiaXNzIjoiREZJTEUiLCJhdWQiOiJERklMRSIsInN1YiI6IjA5OTk5OTk5OTgifQ.XdhIAVZjK1Wd8oHjFMiiEY3AXv2T-eFsv2Ps2rLVEhA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/auth/v1/user/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"v1",
+						"user",
+						"5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "get detail",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/auth/v1/user/5",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"v1",
+								"user",
+								"5"
+							]
+						}
+					},
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"userId\": {\n            \"id\": 5,\n            \"phone\": \"0999999998\",\n            \"email\": \"nguyenvanabc@gmail.com\",\n            \"status\": \"0\"\n        },\n        \"fullName\": \"Nguyễn Văn ABC\"\n    }\n}"
+				}
+			]
+		}
+	]
+}

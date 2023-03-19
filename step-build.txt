@@ -1,0 +1,4 @@
+Step run project: 
+1. open br-bom run "mvn clean install"
+2. open br-common run "mvn clean install"
+3. open br-authen-service run "mvn clean install"
